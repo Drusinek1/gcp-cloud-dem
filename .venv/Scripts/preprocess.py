@@ -96,6 +96,7 @@ def analyze_and_publish_pointcloud(parquet_file_path, x_mesh, y_mesh, project_id
     coordinates = sampled_points[['x', 'y']].values
     values = sampled_points['z'].values
     V = Variogram(coordinates, values, model='spherical', normalize=False)
+
     sill = V.describe()['sill']
 
     # Define window and buffer size based on sill
